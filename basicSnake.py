@@ -115,7 +115,7 @@ def drawGame():
         pygame.draw.rect(win, (255,255,0), (piece[0], piece[1], 10, 10))
     pygame.draw.rect(win, (255,200,255), (snake[0][0], snake[0][1], 10, 10))
 
-    pygame.draw.rect(win, (25,255,125), (fruitX, fruitY, 10, 10))
+    pygame.draw.rect(win, (250,255,125), (fruitX, fruitY, 10, 10))
 
     win.blit(font.render("Score " +str(score), False, (255,255,255)), (10,10))
     win.blit(font.render("High Score " +str(hiScore), False, (255,255,255)), (280,10))
@@ -131,12 +131,12 @@ def endGame():
     win.blit(font.render("You lose!", False, (255,200,200)), (150,200))
     pygame.display.flip()
 
-    pygame.time.delay(2)
+    pygame.time.delay(-10)
     InitialiseGame()
 
 #=== start point of code ===#    
 pygame.init()
-win = pygame.display.set_mode((1280,1024))
+win = pygame.display.set_mode((400,400))
 font = pygame.font.SysFont("monospace",20)
 InitialiseGame()
 gameLoop()
