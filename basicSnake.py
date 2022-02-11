@@ -55,10 +55,10 @@ def InitialiseGame():
     win.fill((0,0,0))
     win.blit(font.render("GET READY", False, (90,90,255)), (150,200))
     pygame.display.flip()
-    pygame.time.delay(2000)
+    pygame.time.delay(2)
     score = 0
     updateTimer=0
-    speed = 80
+    speed = 60
     snake = [[220,190],[210,190],[200,190],[190,190],[180,190],[170,190]]
     direction = [10,0]
     newFruit()
@@ -112,30 +112,31 @@ def gameKeys():
 def drawGame():
     win.fill((0,0,0))
     for piece in snake[1:]:
-        pygame.draw.rect(win, (255,0,0), (piece[0], piece[1], 10, 10))
-    pygame.draw.rect(win, (255,200,200), (snake[0][0], snake[0][1], 10, 10))
+        pygame.draw.rect(win, (255,255,0), (piece[0], piece[1], 10, 10))
+    pygame.draw.rect(win, (255,200,255), (snake[0][0], snake[0][1], 10, 10))
 
-    pygame.draw.rect(win, (0,255,0), (fruitX, fruitY, 10, 10))
+    pygame.draw.rect(win, (25,255,125), (fruitX, fruitY, 10, 10))
 
-    win.blit(font.render("score " +str(score), False, (255,255,255)), (10,10))
-    win.blit(font.render("h-score " +str(hiScore), False, (255,255,0)), (280,10))
-    win.blit(font.render("fps " +str(fps), False, (255,255,255)), (190,0))
+    win.blit(font.render("Score " +str(score), False, (255,255,255)), (10,10))
+    win.blit(font.render("High Score " +str(hiScore), False, (255,255,255)), (280,10))
+    win.blit(font.render("Fps " +str(fps), False, (255,255,255)), (190,0))
 
     pygame.display.flip()
+
 
 def endGame():
     global hiScore
     if (score > hiScore):
         hiScore = score
-    win.blit(font.render("Doh!", False, (255,200,200)), (150,200))
+    win.blit(font.render("You lose!", False, (255,200,200)), (150,200))
     pygame.display.flip()
 
-    pygame.time.delay(2000)
+    pygame.time.delay(2)
     InitialiseGame()
 
 #=== start point of code ===#    
 pygame.init()
-win = pygame.display.set_mode((400, 400))
+win = pygame.display.set_mode((1280,1024))
 font = pygame.font.SysFont("monospace",20)
 InitialiseGame()
 gameLoop()
